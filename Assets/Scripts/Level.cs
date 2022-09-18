@@ -19,4 +19,6 @@ public class Level : BaseLevel
     {
         base.Success(score);
     }
+    
+    
 }

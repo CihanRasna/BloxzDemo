@@ -1,11 +1,18 @@
+using System;
 using UnityEngine;
 
 public class EmptyTile : MonoBehaviour
 {
-    public bool placeablePosition;
+    public bool isPlaceable { get; private set; }
 
-    private void Start()
+    [SerializeField] private Renderer _renderer;
+
+    public void IsTilePlaceable(bool value, Material placeableMaterial)
     {
-        
+        isPlaceable = value;
+        if (isPlaceable)
+        {
+            _renderer.material = placeableMaterial;
+        }
     }
 }

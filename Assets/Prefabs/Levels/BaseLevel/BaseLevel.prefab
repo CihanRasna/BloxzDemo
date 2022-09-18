@@ -186,12 +186,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167c8ce8466c7c841aeec4cec21a4a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalCount: 9
-  horizontalCount: 14
   tilePrefab: {fileID: 2433382760961763052, guid: b7697a67b86c9c046bafcbfcc491afb7, type: 3}
   tile: []
   material: {fileID: 2100000, guid: fd0f51d32ae950141988febbf79753e7, type: 2}
+  placeableMaterial: {fileID: 2100000, guid: 1086203a5c9d9cb408d7610027f285d8, type: 2}
   vCam: {fileID: 4959751888906858454}
+  tableMatrix: {fileID: 0}
 --- !u!1 &5161944871305549466
 GameObject:
   m_ObjectHideFlags: 0
