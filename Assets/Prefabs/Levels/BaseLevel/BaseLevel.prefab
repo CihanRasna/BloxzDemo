@@ -142,6 +142,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  draggablePositions: []
+  tilePrefab: {fileID: 2433382760961763052, guid: b7697a67b86c9c046bafcbfcc491afb7, type: 3}
+  placeableMaterial: {fileID: 2100000, guid: 1086203a5c9d9cb408d7610027f285d8, type: 2}
+  vCam: {fileID: 4959751888906858454}
+  tableMatrix: {fileID: 0}
+  draggableItem: {fileID: 8654453110712603278, guid: b2113314183e8cc479513aeffbdaa6e7, type: 3}
+  puzzlePartPrefab: {fileID: 2466373803470043104, guid: 07eb655684f4fc341a591e43b4ba6f61, type: 3}
+  letterArea: {fileID: 1213844602224994278}
 --- !u!1 &4002797165633386061
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,12 +194,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167c8ce8466c7c841aeec4cec21a4a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 2433382760961763052, guid: b7697a67b86c9c046bafcbfcc491afb7, type: 3}
+  tilePrefab: {fileID: 0}
   tile: []
-  material: {fileID: 2100000, guid: fd0f51d32ae950141988febbf79753e7, type: 2}
-  placeableMaterial: {fileID: 2100000, guid: 1086203a5c9d9cb408d7610027f285d8, type: 2}
-  vCam: {fileID: 4959751888906858454}
+  placeableMaterial: {fileID: 0}
+  vCam: {fileID: 0}
   tableMatrix: {fileID: 0}
+  draggableItem: {fileID: 0}
+  puzzlePartPrefab: {fileID: 0}
+  _placeableTiles: []
 --- !u!1 &5161944871305549466
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5161944871305549466}
   m_LocalRotation: {x: 0.51738656, y: -0, z: -0, w: 0.8557518}
-  m_LocalPosition: {x: 0, y: 28.57, z: -2.16}
+  m_LocalPosition: {x: 0, y: 28.57, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -247,7 +257,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 15
+    OrthographicSize: 17
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -326,7 +336,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 265be4016a27f694783c4098834907dd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

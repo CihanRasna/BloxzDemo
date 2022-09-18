@@ -14,7 +14,7 @@ namespace Panels
 
         public void GetLevelIdx(int idx)
         {
-            levelText.text = $"Level {idx}";
+            //levelText.text = $"Level {idx}";
         }
     }
 }
