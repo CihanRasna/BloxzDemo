@@ -26,7 +26,7 @@ public class PuzzlePart : MonoBehaviour
     {
         if (forceReturn)
         {
-            //transform.localPosition = initialPos;
+            canBePlaced = false;
             if (emptyTile)
             {
                 emptyTile.tileIsTaken = false;
@@ -70,6 +70,7 @@ public class PuzzlePart : MonoBehaviour
         if (other.TryGetComponent<EmptyTile>(out var emptyTile))
         {
             this.emptyTile = null;
+            canBePlaced = false;
             propertyBlock.SetColor("_Color", standardColor);
             renderer.SetPropertyBlock(propertyBlock);
         }

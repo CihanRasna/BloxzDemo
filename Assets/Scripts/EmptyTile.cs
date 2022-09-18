@@ -38,7 +38,7 @@ public class EmptyTile : MonoBehaviour
         if (isPlaceable)
         {
             renderer.material = placeableMaterial;
-            //collider.enabled = true;
+            collider.enabled = true;
         }
     }
 }

@@ -52,7 +52,9 @@ public class LetterArea : MonoBehaviour
 
         if (horizontalCount > vCam.m_Lens.OrthographicSize)
         {
-            vCam.m_Lens.OrthographicSize = horizontalCount;
+            var size = vCam.m_Lens.OrthographicSize;
+            var desiredSize = horizontalCount - size;
+            vCam.m_Lens.OrthographicSize += desiredSize;
         }
 
         var xOffset = -((horizontalCount - 1) * 0.5f);
@@ -95,7 +97,7 @@ public class LetterArea : MonoBehaviour
         while (_placeableTiles.Count > 0)
         {
             var tileCount = 0;
-            var rndMax = Random.Range(1, Mathf.Min(5, _placeableTiles.Count));
+            var rndMax = Random.Range(2, Mathf.Min(5, _placeableTiles.Count)); // TODO : BUG?
             var draggableParent = Instantiate(draggableItem, level.transform, true);
             var first = _placeableTiles[0];
             var orderByDist = _placeableTiles.OrderBy(w =>
@@ -108,13 +110,14 @@ public class LetterArea : MonoBehaviour
                 
                 float dist = Vector3.Distance(first.transform.position, emptyTile.transform.position);
 
-                if (dist <= 2f && tileCount < rndMax)
+                if (dist <= 1f && tileCount < rndMax)
                 {
                     var go = Instantiate(puzzlePartPrefab, emptyTile.transform.localPosition, Quaternion.identity,
                         draggableParent.transform);
                     go.transform.localPosition -= draggableParent.transform.position;
                     _placeableTiles.Remove(emptyTile);
                     tileCount += 1;
+                    first = emptyTile;
                 }
             }
             

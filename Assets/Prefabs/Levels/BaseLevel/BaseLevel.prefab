@@ -150,6 +150,7 @@ MonoBehaviour:
   draggableItem: {fileID: 8654453110712603278, guid: b2113314183e8cc479513aeffbdaa6e7, type: 3}
   puzzlePartPrefab: {fileID: 2466373803470043104, guid: 07eb655684f4fc341a591e43b4ba6f61, type: 3}
   letterArea: {fileID: 1213844602224994278}
+  placeableTiles: []
 --- !u!1 &4002797165633386061
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +258,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 17
+    OrthographicSize: 20
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

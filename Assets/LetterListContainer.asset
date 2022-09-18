@@ -15,7 +15,11 @@ MonoBehaviour:
   letters:
   - {fileID: 11400000, guid: ff0588e6579debf4bb028fe3f09905b6, type: 2}
   - {fileID: 11400000, guid: 26f59d94919de164cb7e0ce2cff5f3c8, type: 2}
-  - {fileID: 11400000, guid: 239b5337034874442bbdc2a54c0e82fa, type: 2}
-  - {fileID: 11400000, guid: 3c0545f56d72f1e4dbd75f5c5bc58c78, type: 2}
   - {fileID: 11400000, guid: 966b8607db5cdaf459c13a10e1ed05ba, type: 2}
+  - {fileID: 11400000, guid: 3c0545f56d72f1e4dbd75f5c5bc58c78, type: 2}
+  - {fileID: 11400000, guid: 8cfbe3ae18ad0f348941b44a3518a147, type: 2}
+  - {fileID: 11400000, guid: 8687b8a157c6a7c449e87ba085d7d6e0, type: 2}
+  - {fileID: 11400000, guid: 2c393a62fc3b9e947a515b7e1f8aa0e7, type: 2}
   - {fileID: 11400000, guid: a760c0be2f8b1a247a65723ddceedb0a, type: 2}
+  - {fileID: 11400000, guid: f94b112d488ed2f4a996e499c7e987eb, type: 2}
+  - {fileID: 11400000, guid: eb380b968f75a0c4893125bf7b42c6b3, type: 2}
