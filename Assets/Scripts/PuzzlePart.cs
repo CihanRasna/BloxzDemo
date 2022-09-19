@@ -39,8 +39,7 @@ public class PuzzlePart : MonoBehaviour
         
         if (emptyTile)
         {
-            emptyTile.tileIsTaken = true;
-            transform.DOMove(emptyTile.transform.position, 0.2f);
+            transform.DOMove(emptyTile.transform.position, 0.2f).OnComplete((() => emptyTile.tileIsTaken = true));
         }
     }
 

@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace Managers
 {
-    public class InputManager : Singleton<InputManager> , IPointerDownHandler , IDragHandler , IPointerUpHandler
+    public class InputManager : Singleton<InputManager>, IPointerDownHandler, IDragHandler, IPointerUpHandler
     {
         public bool isFirstTouch;
         private Camera _camera;
@@ -20,21 +20,35 @@ namespace Managers
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            var ray = _camera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out var hit,10000f, rayCastLayers)) 
-            {
-                hit.collider.TryGetComponent(out DraggableItem draggableItem);
+            var level = LevelManager.Instance.currentLevel as Level;
 
-                if (draggableItem.OnPlace)
+            if (!isFirstTouch)
+            {
+                isFirstTouch = true;
+                level.LevelStarted();
+            }
+
+            if (level.state == BaseLevel.State.Started)
+            {
+                var ray = _camera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out var hit, 10000f, rayCastLayers))
                 {
-                    draggableItem.TryToGetPlace(true);
-                    return;
+                    hit.collider.TryGetComponent(out DraggableItem draggableItem);
+
+                    if (draggableItem.OnPlace)
+                    {
+                        draggableItem.TryToGetPlace(true);
+                        return;
+                    }
+
+                    draggableTransform = draggableItem;
+                    var draggablePosition = draggableTransform.transform.position;
+                    screenPoint = _camera.WorldToScreenPoint(draggablePosition);
+                    offset = draggablePosition -
+                             _camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+                                 screenPoint.z));
+                    //draggableItem.transform.position = screenPoint + offset;
                 }
-                draggableTransform = draggableItem;
-                var draggablePosition = draggableTransform.transform.position;
-                screenPoint = _camera.WorldToScreenPoint(draggablePosition);
-                offset = draggablePosition - _camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
-                //draggableItem.transform.position = screenPoint + offset;
             }
         }
 

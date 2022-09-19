@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 namespace Managers
 {
@@ -24,6 +25,17 @@ namespace Managers
         {
             return letterListContainer.letters[Random.Range(0, letterListContainer.letters.Count)];
         }
-        
+
+        protected override void OnApplicationQuit()
+        {
+            base.OnApplicationQuit();
+            DOTween.KillAll();
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            DOTween.KillAll();
+        }
     }
 }

@@ -8,10 +8,10 @@ namespace Managers
         IFailedPanelDelegate, ISucceedPanelDelegate, ITutorialPanelDelegate
     {
         public SafeAreaTracker safeAreaTracker { get; private set; }
+        [field: SerializeField] public Canvas canvas { get; private set; }
 
         [field: Header("Panels"), SerializeField]
         public GamePanel gamePanel { get; private set; }
-
         [field: SerializeField] public SucceedPanel succeedPanel { get; private set; }
         [field: SerializeField] public FailedPanel failedPanel { get; private set; }
         [field: SerializeField] public TutorialPanel tutorialPanel { get; private set; }
@@ -85,26 +85,31 @@ namespace Managers
 
         private void LevelDidLoad(BaseLevel level)
         {
+            canvas.sortingOrder = -1;
             HideAllPanels();
             tutorialPanel.Display();
             var count = PersistManager.Instance.playedLevelCount + 1;
             gamePanel.GetLevelIdx(count);
+            tutorialPanel.StartTutorialAnimation(true);
         }
 
         private void LevelDidStart(BaseLevel level)
         {
+            tutorialPanel.StartTutorialAnimation(false);
             tutorialPanel.Hide();
             gamePanel.Display();
         }
 
         private void LevelDidSuccess(BaseLevel level, float score)
         {
+            canvas.sortingOrder = 1;
             HideAllPanels();
             succeedPanel.Display();
         }
 
         private void LevelDidFail(BaseLevel level)
         {
+            canvas.sortingOrder = 1;
             HideAllPanels();
             failedPanel.Display();
         }

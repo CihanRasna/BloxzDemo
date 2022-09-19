@@ -147,10 +147,11 @@ MonoBehaviour:
   placeableMaterial: {fileID: 2100000, guid: 1086203a5c9d9cb408d7610027f285d8, type: 2}
   vCam: {fileID: 4959751888906858454}
   tableMatrix: {fileID: 0}
-  draggableItem: {fileID: 8654453110712603278, guid: b2113314183e8cc479513aeffbdaa6e7, type: 3}
+  draggableItemPrefab: {fileID: 8654453110712603278, guid: b2113314183e8cc479513aeffbdaa6e7, type: 3}
   puzzlePartPrefab: {fileID: 2466373803470043104, guid: 07eb655684f4fc341a591e43b4ba6f61, type: 3}
   letterArea: {fileID: 1213844602224994278}
   placeableTiles: []
+  draggableItems: []
 --- !u!1 &4002797165633386061
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 0}
-  tile: []
+  tiles: []
   placeableMaterial: {fileID: 0}
   vCam: {fileID: 0}
   tableMatrix: {fileID: 0}

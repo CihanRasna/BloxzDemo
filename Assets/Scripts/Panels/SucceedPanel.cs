@@ -1,4 +1,5 @@
-﻿using Managers;
+﻿using DG.Tweening;
+using Managers;
 
 namespace Panels
 {
@@ -10,6 +11,7 @@ namespace Panels
     {
         public void NextLevel()
         {
+            DOTween.KillAll();
             LevelManager.Instance.LoadNextLevel();
         }
     }

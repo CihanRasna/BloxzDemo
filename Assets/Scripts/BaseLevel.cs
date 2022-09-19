@@ -33,8 +33,6 @@ public abstract class BaseLevel : MonoBehaviour
 
     public void LevelLoaded()
     {
-        ValidateLevel();
-
         if (state == State.Loading)
         {
             InputManager.Instance.isFirstTouch = false;
@@ -88,20 +86,6 @@ public abstract class BaseLevel : MonoBehaviour
     public void StartOnFirstTouch()
     {
         StartLevel();
-    }
-
-    #endregion
-
-    public Player player;
-
-    #region Validation
-
-    private void  ValidateLevel()
-    {
-        if (GetComponentsInChildren<Player>().Length > 1)
-        {
-            throw new Exception("There are more than one PlayerMovementController component in the level!");
-        }
     }
 
     #endregion

@@ -17,6 +17,16 @@ public class DraggableItem : MonoBehaviour
         transform.position = pos;
         transform.DOPunchScale(Vector3.one * 1.5f, 0.5f,1);
     }
+    
+    public void SucceedAnimation()
+    {
+        foreach (var tile in puzzleParts)
+        {
+            var pos = tile.transform.localPosition;
+            var rndTime = Random.Range(0.1f, 0.5f);
+            tile.transform.DOLocalMoveY(pos.y + 0.5f, rndTime).SetLoops(-1, LoopType.Yoyo);
+        }
+    }
 
     public void TryToGetPlace(bool forceReturn = false)
     {

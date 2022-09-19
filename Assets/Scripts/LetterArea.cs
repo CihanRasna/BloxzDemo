@@ -14,7 +14,7 @@ public class LetterArea : MonoBehaviour
     private int horizontalCount;
 
     [SerializeField] private EmptyTile tilePrefab;
-    [SerializeField, HideInInspector] private List<EmptyTile> tile;
+    [SerializeField, HideInInspector] private List<EmptyTile> tiles;
     [SerializeField] private Material placeableMaterial;
     [SerializeField] private CinemachineVirtualCamera vCam;
     [SerializeField] private TableMatrix tableMatrix;
@@ -38,6 +38,19 @@ public class LetterArea : MonoBehaviour
         StartCoroutine(StartTileCo());
     }
 
+
+    public void SucceedAnimation()
+    {
+        //var sequence = DOTween.Sequence();
+        foreach (var tile in tiles)
+        {
+            var pos = tile.transform.localPosition;
+            var rndTime = Random.Range(0.1f, 0.5f);
+            tile.transform.DOLocalMoveY(pos.y + 0.5f, rndTime).SetLoops(-1, LoopType.Yoyo);
+        }
+
+        //sequence.Play();
+    }
     private IEnumerator StartTileCo()
     {
         RemoveTile();
@@ -80,7 +93,7 @@ public class LetterArea : MonoBehaviour
                     _placeableTiles.Add(go);
                 }
 
-                tile.Add(go);
+                tiles.Add(go);
             }
         }
         
@@ -97,7 +110,7 @@ public class LetterArea : MonoBehaviour
         while (_placeableTiles.Count > 0)
         {
             var tileCount = 0;
-            var rndMax = Random.Range(2, Mathf.Min(5, _placeableTiles.Count)); // TODO : BUG?
+            var rndMax = Random.Range(3, Mathf.Min(5, _placeableTiles.Count)); // TODO : BUG?
             var draggableParent = Instantiate(draggableItem, level.transform, true);
             var first = _placeableTiles[0];
             var orderByDist = _placeableTiles.OrderBy(w =>
@@ -121,6 +134,7 @@ public class LetterArea : MonoBehaviour
                 }
             }
             
+            level.draggableItems.Add(draggableParent);
             draggableParent.CenterOnChildren();
             draggableParent.SetPositionOfItem(pos[0]);
             pos.RemoveAt(0);
@@ -131,11 +145,11 @@ public class LetterArea : MonoBehaviour
     [Button]
     private void RemoveTile()
     {
-        foreach (var go in tile)
+        foreach (var go in tiles)
         {
             DestroyImmediate(go);
         }
 
-        tile.Clear();
+        tiles.Clear();
     }
 }

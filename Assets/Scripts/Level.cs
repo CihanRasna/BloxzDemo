@@ -11,10 +11,13 @@ public class Level : BaseLevel
     [SerializeField] private Material placeableMaterial;
     [SerializeField] private CinemachineVirtualCamera vCam;
     [SerializeField] private TableMatrix tableMatrix;
-    [SerializeField] private DraggableItem draggableItem;
+    [SerializeField] private DraggableItem draggableItemPrefab;
     [SerializeField] private PuzzlePart puzzlePartPrefab;
     [SerializeField] private LetterArea letterArea;
     public List<EmptyTile> placeableTiles;
+
+    [HideInInspector] public List<DraggableItem> draggableItems;
+    
 
     private void Start()
     {
@@ -37,13 +40,13 @@ public class Level : BaseLevel
         {
             tableMatrix = GameManager.Instance.ReturnRandomLetter();
         }
-        letterArea.GetValuesFromLevel(tilePrefab, placeableMaterial, vCam, tableMatrix, draggableItem,
+        letterArea.GetValuesFromLevel(tilePrefab, placeableMaterial, vCam, tableMatrix, draggableItemPrefab,
             puzzlePartPrefab);
     }
 
-    protected override void LevelDidStart()
+    public void LevelStarted()
     {
-        base.LevelDidStart();
+        StartLevel();
     }
 
     public void TileIsTaken(EmptyTile tile)
@@ -51,7 +54,9 @@ public class Level : BaseLevel
         placeableTiles.Remove(tile);
         if (placeableTiles.Count == 0 && state != State.Succeeded)
         {
-            Debug.Log($"Success");
+            letterArea.SucceedAnimation();
+            foreach (var draggableItem in draggableItems)
+                draggableItem.SucceedAnimation();
             Success(1);
         }
     }
